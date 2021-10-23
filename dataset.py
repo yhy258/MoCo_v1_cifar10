@@ -4,7 +4,8 @@ import torch
 from torch.utils.data import Dataset
 
 """
-    
+    CIFAR 10 gz.tar의 경우, 데이터가 총 5개로 나눠져서 저장되어 있음. data_batch_1, data_batch_2 ...  
+    각 data batch에는 10000개의 데이터가 들어가 있음.
 """
 
 
@@ -15,7 +16,9 @@ def unpickle(file):
         dict = pickle.load(fo, encoding='bytes')
     return dict
 
-
+"""
+    CIFAR10 데이터가 이렇게 저장되어있음.  
+"""
 def unpickle_all(cifar_directory):
     data1 = unpickle(os.path.join(cifar_directory, "data_batch_1"))
     data2 = unpickle(os.path.join(cifar_directory, "data_batch_2"))
